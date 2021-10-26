@@ -17,15 +17,18 @@ all: fp fx bigfx
 
 fp:
 	mkdir -p bin/fp/
+	$(CC) src/fp/cifar10.c $(FP_CC) -Isrc/fp/ -lm -o bin/fp/cifar10 $(CFLAGS)
 	$(CC) src/fp/fit.c $(FP_CC) -Isrc/fp/ -lm -o bin/fp/fit $(CFLAGS)
 
 fx:
 	mkdir -p bin/fx/
+	$(CC) src/fx/cifar10.c $(FX_CC) -Isrc/fx/ -lm -o bin/fx/cifar10 $(CFLAGS)
 	$(CC) src/fx/fit.c $(FX_CC) -lm -Isrc/fx/ -o bin/fx/fit $(CFLAGS)
 	$(CC) src/fx/gen_prng.c $(FX_CC) -lm -Isrc/fx/ -o bin/fx/gen_prng $(CFLAGS)
 
 bigfx:
 	mkdir -p bin/bigfx/
+	$(CC) src/bigfx/cifar10.c $(BIGFX_CC) -Isrc/bigfx/ -lm -o bin/bigfx/cifar10 $(CFLAGS)
 	$(CC) src/bigfx/fit.c $(BIGFX_CC) -lm -Isrc/bigfx/ -o bin/bigfx/fit $(CFLAGS)
 	$(CC) src/bigfx/gen_bigfx.c $(BIGFX_CC) -lm -Isrc/bigfx/ -o bin/bigfx/gen_bigfx $(CFLAGS)
 	$(CC) src/bigfx/gen_prng.c $(BIGFX_CC) -lm -Isrc/bigfx/ -o bin/bigfx/gen_prng $(CFLAGS)
